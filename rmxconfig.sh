@@ -46,8 +46,8 @@ fx_do_get_vars(){
     #get sql link
     read -e -p "Full SQL link: " SQLLINK
 
-    #get config variables
-    read -e
+    #config SQL
+    sh ./sqlconfig.sh
     fx_out_all()
 }
 
