@@ -5,6 +5,14 @@ fx_print_init(){
     echo "Welcome to RMX Automated WAHFFLE configurator"
     echo "To view this command's man page, type 'rmxconfig --man'"
 }
+fx_out_all(){
+    echo ""
+    echo ""
+    echo "Review all inputs before proceeding."
+    echo "Health Facility Name: $FACILITYNAME" 
+    echo "Folder Name: /var/www/$FOLDERNAME" 
+    echo "SQL Link: $SQLLINK"
+}
 fx_print_man(){
     echo "Welcome to RMX Automated WAHFFLE configurator"
     echo "This script automates most of the process configuration including MySQL configuration and folder config."
@@ -26,12 +34,13 @@ fx_do_main(){
     #create /var/www/folder
     echo "/var/www folder name"
     read FOLDERNAME
-    mv /var/www/wahmapandan /var/www/{$FOLDERNAME}
+    mv /var/www/wahmapandan /var/www/$FOLDERNAME
     
     echo "Full SQL link:"
     read SQLLINK
-    echo ""
+    fx_out_all()
 }
+
 if [ -z "$1" ]; then
     fx_print_init
 fi
