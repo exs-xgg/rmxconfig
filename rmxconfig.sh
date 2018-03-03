@@ -1,6 +1,13 @@
 #!/bin/bash
 #script written by romeo manuel e. david.
-
+#  _____  __  ____   __   _____ ____  _   _ ______ _____ _____ 
+# |  __ \|  \/  \ \ / /  / ____/ __ \| \ | |  ____|_   _/ ____|
+# | |__) | \  / |\ V /  | |   | |  | |  \| | |__    | || |  __ 
+# |  _  /| |\/| | > <   | |   | |  | | . ` |  __|   | || | |_ |
+# | | \ \| |  | |/ . \  | |___| |__| | |\  | |     _| || |__| |
+# |_|  \_\_|  |_/_/ \_\  \_____\____/|_| \_|_|    |_____\_____|
+#                                                              
+                                                              
 fx_print_init(){
     echo "Welcome to RMX Automated WAHFFLE configurator"
     echo "To view this command's man page, type 'rmxconfig --man'"
@@ -25,19 +32,22 @@ fx_print_man(){
     echo "/var/www folder name: wahzamboanga2"
     echo "Full SQL link: ~/Downloads/zamboanga2060917.sql"
 }
-fx_do_main(){
+fx_do_get_vars(){
     echo "Welcome to RMX Automated WAHFFLE configurator"
-    echo "Input what is asked!"
-    echo "Health Facility Name:" 
-    read FACILITYNAME
+    echo "Input what is asked! No Erasures please"
+
+    #read facility name
+    read -e -p "Health Facility Name: " FACILITYNAME
     
     #create /var/www/folder
-    echo "/var/www folder name"
-    read FOLDERNAME
-    mv /var/www/wahmapandan /var/www/$FOLDERNAME
+    read -e -p "/var/www folder name: " FOLDERNAME
+    #mv /var/www/wahmapandan /var/www/$FOLDERNAME
     
-    echo "Full SQL link:"
-    read SQLLINK
+    #get sql link
+    read -e -p "Full SQL link: " SQLLINK
+
+    #get config variables
+    read -e
     fx_out_all()
 }
 
@@ -49,7 +59,7 @@ if [ -n "$1" ]; then
         fx_print_man
     else
         if [ "$1" == "--iamhorny" ]; then
-            fx_do_main
+            fx_do_get_vars
         else
             fx_print_init
         fi
