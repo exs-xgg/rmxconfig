@@ -67,7 +67,7 @@ fx_proceed(){
 
     #initialize environment
     echo "[+] SETTING UP FOLDER"
-    sudo cp /var/www/wahmapandan /var/www/$FOLDERNAME
+    sudo cp -R /var/www/wahmapandan /var/www/$FOLDERNAME
     echo "[+] SETTING UP _dbselect"
     sudo sed -i -e 's/'"placeholder"'/'"$SQLDBNAME"'/g' _dbselect.php
     sudo cat _dbselect.php > /var/www/$FOLDERNAME/modules/_dbselect.php
@@ -126,8 +126,8 @@ fx_do_get_vars(){
     read -e -p "/var/www folder name: " FOLDERNAME
     
     #get sql link
-    if [ -n "$2" ]; then
-        SQLLINK="$2";
+    if [ -n "$3" ]; then
+        SQLLINK="$3";
     else
        read -e -p "Full SQL link: " SQLLINK
     fi
