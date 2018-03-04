@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config>
+	<node>
+		<name>MAPANDAN RURAL HEALTH UNIT</name>
+		<code>015528014</code>
+		<telephone></telephone>
+		<level>self</level>
+		<hfid>DOH000000000006508</hfid>
+		<accred>P01024171</accred>
+		<prc>00741442</prc>
+		<lastname>Quinto</lastname>
+		<firstname>Cristina</firstname>
+		<middlename>Langit</middlename>
+		<suffix>NA</suffix>
+		<wkey>UMkllcygRiErG+37u02ibA==</wkey>
+		<ekey>VUVoSlJUSXdNVGN3TVRjNU5nPT1KRkFrUW5WU1F6ZFdWamxsYVV3eE5raDVlREZzYVU0NVdGRXhOV0UzY2k1RkxnPT0=</ekey>
+		<wsdl>https://119.92.200.12/webservice/index.php?wsdl</wsdl>
+	</node>
+	<node>
+		<name>MAPANDAN RURAL HEALTH UNIT</name>
+		<code>015528014</code>
+		<telephone></telephone>
+		<level>parent</level>
+		<hfid>DOH000000000006508</hfid>
+	</node>
+	<node>
+		<name>MAPANDAN RURAL HEALTH UNIT</name>
+		<code>015528014</code>
+		<telephone></telephone>
+		<level>child</level>
+		<hfid>DOH000000000006508</hfid>
+	</node>
+</config>

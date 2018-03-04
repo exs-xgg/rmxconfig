@@ -12,6 +12,44 @@ fx_print_init(){
     echo "Welcome to RMX Automated WAHFFLE configurator"
     echo "To view this command's man page, type 'rmxconfig --man'"
 }
+fx_print_xml(){
+
+cat <<EOT > ./config.xml
+    <?xml version="1.0"?>
+<config>
+    <node>
+        <name>$FACILITYNAME</name>
+        <code>$CODE</code>
+        <telephone></telephone>
+        <level>self</level>
+        <hfid>$HFID</hfid>
+        <accred>$ACCRED</accred>
+        <prc>$PRC</prc>
+        <lastname>$LASTNAME</lastname>
+        <firstname>$FIRSTNAME</firstname>
+        <middlename>$MIDDLENAME</middlename>
+        <suffix>NA</suffix>
+        <wkey>$WKEY</wkey>
+        <ekey>$EKEY</ekey>
+        <wsdl>https://119.92.200.12/webservice/index.php?wsdl</wsdl>
+    </node>
+    <node>
+        <name>$FACILITYNAME</name>
+        <code>$CODE</code>
+        <telephone></telephone>
+        <level>parent</level>
+        <hfid>$HFID</hfid>
+    </node>
+    <node>
+        <name>$FACILITYNAME</name>
+        <code>$CODE</code>
+        <telephone></telephone>
+        <level>childf</level>
+        <hfid>$HFID</hfid>
+    </node>
+</config>
+EOT
+}
 fx_out_all(){
     echo ""
     echo ""
@@ -19,6 +57,7 @@ fx_out_all(){
     echo "Health Facility Name: $FACILITYNAME" 
     echo "Folder Name: /var/www/$FOLDERNAME" 
     echo "SQL Link: $SQLLINK"
+    cat ./config.xml
 }
 fx_print_man(){
     echo "Welcome to RMX Automated WAHFFLE configurator"
@@ -47,7 +86,18 @@ fx_do_get_vars(){
     read -e -p "Full SQL link: " SQLLINK
 
     #config SQL
-    sh ./sqlconfig.sh
+    read -e -p "Full SQL DB Name: " SQLDBNAME
+
+    #config xml
+    read -e -p "BRGY CODE WITH 0: " CODE
+    read -e -p "HF ID: " HFID
+    read -e -p "ACCREDITATION ID: " ACCRED
+    read -e -p "PRC CODE: " PRC
+    read -e -p "MHO LAST NAME: " LASTNAME
+    read -e -p "MHO FIRST NAME: " FIRSTNAME
+    read -e -p "MHO MIDDLE NAME: " MIDDLENAME
+    read -e -p "WKEY: " WKEY
+    read -e -p "ENCRYPTION KEY: " EKEY
     fx_out_all()
 }
 
