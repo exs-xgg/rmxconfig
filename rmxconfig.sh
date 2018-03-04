@@ -77,7 +77,7 @@ fx_proceed(){
     fx_print_xml
     sudo cat config.xml > /var/www/$FOLDERNAME/config.xml
     echo "[+] SETTING UP permissions"
-    sudo chmod 755 /var/www/$FOLDERNAME
+    sudo chmod 777 /var/www/$FOLDERNAME
     echo ""
     echo "====================="
     echo "Done setting up!"
@@ -105,16 +105,22 @@ fx_out_all(){
     fi
 }
 fx_print_man(){
+    echo "=================================="
     echo "Welcome to RMX Automated WAHFFLE configurator"
     echo "This script automates most of the process configuration including MySQL configuration and folder config."
-    echo "To use this script, just run it with the --iamhorny parameter and input all the required fields."
+    echo "To use this script, just run it with the --init-script parameter and input all the required fields."
     echo ""
+    echo "=================================="
     echo ""
-    echo "Example usage:"
-    echo "# ./rmxconfig.sh --init-script"
-    echo "Health Facitlty Name: Zamboanga District Health Center 2"
-    echo "/var/www folder name: wahzamboanga2"
-    echo "Full SQL link: ~/Downloads/zamboanga2060917.sql"
+    echo "IMPORTANT: You should run this with sudo."
+    echo "# sudo ./rmxconfig.sh --init-script"
+    echo ""
+    echo "=================================="
+    echo ""
+    echo "MORE IMPORTANT: Further in the script you will be required to input the SQL dump url. Please input the complete url"
+    echo "e.g. Full SQL Link: ~/Downloads/agno06092017.sql"
+    echo ""
+    echo "=================================="
 }
 fx_do_get_vars(){
     echo "Welcome to RMX Automated WAHFFLE configurator"
@@ -127,8 +133,8 @@ fx_do_get_vars(){
     read -e -p "/var/www folder name: " FOLDERNAME
     
     #get sql link
-    if [ -n "$3" ]; then
-        SQLLINK="$3";
+    if [ -n "$2" ]; then
+        SQLLINK="$2";
     else
        read -e -p "Full SQL link: " SQLLINK
     fi
