@@ -51,13 +51,36 @@ cat <<EOT > ./config.xml
 EOT
 }
 fx_proceed(){
+
+    #initialize database
+    echo ""
+    echo "==================="
+    echo "[+] CREATING DATABASE QUERIES"
     echo "create database $SQLDBNAME; " > configsql.sql
     echo "use $SQLDBNAME;" >> configsql.sql
+    cat $SQLLINK >> configsql.sql
+    cat mod.sql >> configsql.sql
+    echo "[+] EXECUTING DATABASE QUERIES"
     mysql -uroot -proot < configsql.sql
+    echo "[+] DATABASE SETUP SUCCESSFUL"
 
-    msyql -uroot -proot $SQLDBNAME < $SQLLINK
-    mysql -uroot -proot $SQLDBNAME < ./mod.sql
+
+    #initialize environment
+    echo "[+] SETTING UP FOLDER"
+    cp /var/www/wahmapandan /var/www/$FOLDERNAME
+    echo "[+] SETTING UP _dbselect"
     sed -i -e 's/'"placeholder"'/'"$SQLDBNAME"'/g' _dbselect.php
+    cat _dbselect.php > /var/www/$FOLDERNAME/modules/_dbselect.php
+
+    #initialize xml
+    echo "[+] SETTING UP config.xml"
+    fx_print_xml()
+    cat config.xml > /var/www/$FOLDERNAME/config.xml
+
+    echo ""
+    echo "====================="
+    echo "Done setting up!"
+    echo ""
 
 }
 fx_out_all(){
@@ -84,9 +107,9 @@ fx_print_man(){
     echo "This script automates most of the process configuration including MySQL configuration and folder config."
     echo "To use this script, just run it with the --iamhorny parameter and input all the required fields."
     echo ""
-    echo "No erasures please. Abort this script using Ctrl + C and start over."
+    echo ""
     echo "Example usage:"
-    echo "# ./rmxconfig.sh --iamhorny"
+    echo "# ./rmxconfig.sh --init-script"
     echo "Health Facitlty Name: Zamboanga District Health Center 2"
     echo "/var/www folder name: wahzamboanga2"
     echo "Full SQL link: ~/Downloads/zamboanga2060917.sql"
@@ -100,10 +123,14 @@ fx_do_get_vars(){
     
     #create /var/www/folder
     read -e -p "/var/www folder name: " FOLDERNAME
-    #mv /var/www/wahmapandan /var/www/$FOLDERNAME
     
     #get sql link
-    read -e -p "Full SQL link: " SQLLINK
+    if [ -n "$2" ]; then
+        SQLLINK="$2";
+    else
+       read -e -p "Full SQL link: " SQLLINK
+    fi
+    
 
     #config SQL
     read -e -p "Full SQL DB Name: " SQLDBNAME
@@ -128,7 +155,7 @@ if [ -n "$1" ]; then
     if [ "$1" == "--man" ]; then
         fx_print_man
     else
-        if [ "$1" == "--iamhorny" ]; then
+        if [ "$1" == "--init-script" ]; then
             fx_do_get_vars
         else
             fx_print_init
