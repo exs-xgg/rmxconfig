@@ -56,28 +56,28 @@ fx_proceed(){
     echo ""
     echo "==================="
     echo "[+] CREATING DATABASE QUERIES"
-    echo "create database $SQLDBNAME; " > configsql.sql
+    sudo echo "create database $SQLDBNAME; " > configsql.sql
     echo "use $SQLDBNAME;" >> configsql.sql
-    cat $SQLLINK >> configsql.sql
-    cat mod.sql >> configsql.sql
+    sudo cat $SQLLINK >> configsql.sql
+    sudo cat mod.sql >> configsql.sql
     echo "[+] EXECUTING DATABASE QUERIES"
-    mysql -uroot -proot < configsql.sql
+    sudo mysql -uroot -proot < configsql.sql
     echo "[+] DATABASE SETUP SUCCESSFUL"
 
 
     #initialize environment
     echo "[+] SETTING UP FOLDER"
-    cp /var/www/wahmapandan /var/www/$FOLDERNAME
+    sudo cp /var/www/wahmapandan /var/www/$FOLDERNAME
     echo "[+] SETTING UP _dbselect"
-    sed -i -e 's/'"placeholder"'/'"$SQLDBNAME"'/g' _dbselect.php
-    cat _dbselect.php > /var/www/$FOLDERNAME/modules/_dbselect.php
+    sudo sed -i -e 's/'"placeholder"'/'"$SQLDBNAME"'/g' _dbselect.php
+    sudo cat _dbselect.php > /var/www/$FOLDERNAME/modules/_dbselect.php
 
     #initialize xml
     echo "[+] SETTING UP config.xml"
     fx_print_xml
-    cat config.xml > /var/www/$FOLDERNAME/config.xml
+    sudo cat config.xml > /var/www/$FOLDERNAME/config.xml
     echo "[+] SETTING UP permissions"
-    chmod 755 /var/www/$FOLDERNAME
+    sudo chmod 755 /var/www/$FOLDERNAME
     echo ""
     echo "====================="
     echo "Done setting up!"
