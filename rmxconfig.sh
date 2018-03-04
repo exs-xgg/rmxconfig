@@ -15,7 +15,7 @@ fx_print_init(){
 fx_print_xml(){
 
 cat <<EOT > ./config.xml
-    <?xml version="1.0"?>
+<?xml version="1.0"?>
 <config>
     <node>
         <name>$FACILITYNAME</name>
@@ -55,7 +55,8 @@ fx_proceed(){
     echo "use $SQLDBNAME;" >> configsql.sql
     mysql -uroot -proot < configsql.sql
 
-    msyql -uroot -proot $SQLDBNAME
+    msyql -uroot -proot $SQLDBNAME < $SQLLINK
+    mysql -uroot -proot $SQLDBNAME < ./mod.sql
     sed -i -e 's/'"placeholder"'/'"$SQLDBNAME"'/g' _dbselect.php
 
 }
