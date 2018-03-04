@@ -50,6 +50,15 @@ cat <<EOT > ./config.xml
 </config>
 EOT
 }
+fx_proceed(){
+    echo "create database $SQLDBNAME; " > configsql.sql
+    echo "use $SQLDBNAME;" >> configsql.sql
+    mysql -uroot -proot < configsql.sql
+
+    msyql -uroot -proot $SQLDBNAME
+    sed -i -e 's/'"placeholder"'/'"$SQLDBNAME"'/g' _dbselect.php
+
+}
 fx_out_all(){
     echo ""
     echo ""
@@ -57,7 +66,17 @@ fx_out_all(){
     echo "Health Facility Name: $FACILITYNAME" 
     echo "Folder Name: /var/www/$FOLDERNAME" 
     echo "SQL Link: $SQLLINK"
+    read -p "Press ENTER key to proceed to config.xml. Press Ctrl + C to abort"
     cat ./config.xml
+    echo ""
+    echo "================="
+    read -e -p "Is everything ok? [y/n]: " DECISION
+    if [[ "$DECISION" == "y" ]]; then
+        fx_proceed()
+    else
+        echo "Bye nigga."
+        exit 1
+    fi
 }
 fx_print_man(){
     echo "Welcome to RMX Automated WAHFFLE configurator"
