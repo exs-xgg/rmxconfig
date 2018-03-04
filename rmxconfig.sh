@@ -76,7 +76,8 @@ fx_proceed(){
     echo "[+] SETTING UP config.xml"
     fx_print_xml()
     cat config.xml > /var/www/$FOLDERNAME/config.xml
-
+    echo "[+] SETTING UP permissions"
+    chmod 755 /var/www/$FOLDERNAME
     echo ""
     echo "====================="
     echo "Done setting up!"
