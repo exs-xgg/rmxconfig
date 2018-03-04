@@ -96,7 +96,7 @@ fx_out_all(){
     echo ""
     echo "================="
     read -e -p "Is everything ok? [y/n]: " DECISION
-    if [[ "$DECISION" == "y" ]]; then
+    if [ "$DECISION" == "y" ]; then
         fx_proceed()
     else
         echo "Bye nigga."
