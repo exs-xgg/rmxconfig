@@ -74,7 +74,7 @@ fx_proceed(){
 
     #initialize xml
     echo "[+] SETTING UP config.xml"
-    fx_print_xml()
+    fx_print_xml
     cat config.xml > /var/www/$FOLDERNAME/config.xml
     echo "[+] SETTING UP permissions"
     chmod 755 /var/www/$FOLDERNAME
@@ -96,17 +96,12 @@ fx_out_all(){
     echo ""
     echo "================="
     read -e -p "Is everything ok? [y/n]: " DECISION
-if [ "$DECISION" == "y" ]; then
-    fx_proceed()
-else
-    echo "Bye nigga."
-    exit 1
-fi
-    # if [ "$1" == "--init-script" ]; then
-    #     fx_do_get_vars
-    # else
-    #     fx_print_init
-    # fi
+    if [ "$DECISION" == "y" ]; then
+        fx_proceed
+    else
+        echo "Bye nigga."
+        exit 1
+    fi
 }
 fx_print_man(){
     echo "Welcome to RMX Automated WAHFFLE configurator"
@@ -151,7 +146,7 @@ fx_do_get_vars(){
     read -e -p "MHO MIDDLE NAME: " MIDDLENAME
     read -e -p "WKEY: " WKEY
     read -e -p "ENCRYPTION KEY: " EKEY
-    fx_out_all()
+    fx_out_all
 }
 
 if [ -z "$1" ]; then
