@@ -96,12 +96,17 @@ fx_out_all(){
     echo ""
     echo "================="
     read -e -p "Is everything ok? [y/n]: " DECISION
-    if [ "$DECISION" == "y" ]; then
-        fx_proceed()
-    else
-        echo "Bye nigga."
-        exit 1
-    fi
+if [ "$DECISION" == "y" ]; then
+    fx_proceed();
+else
+    echo "Bye nigga."
+    exit 1
+fi
+    # if [ "$1" == "--init-script" ]; then
+    #     fx_do_get_vars
+    # else
+    #     fx_print_init
+    # fi
 }
 fx_print_man(){
     echo "Welcome to RMX Automated WAHFFLE configurator"
