@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `phie_response` (
 -- DROP TABLES
 --
 drop table m_lib_civil_status;
-drop table m_lib_vaccine
+drop table m_lib_vaccine;
 
 --
 -- Table structure for table `m_lib_civil_status`
