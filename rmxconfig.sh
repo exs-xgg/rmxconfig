@@ -126,8 +126,11 @@ fx_do_get_vars(){
     read -e -p "/var/www folder name: " FOLDERNAME
     
     #get sql link
-    read -e -p "Full SQL link: " SQLLINK
-    
+    if [ -n "$3" ]; then
+        SQLLINK="$3";
+    else
+       read -e -p "Full SQL link: " SQLLINK
+    fi
     
 
     #config SQL
