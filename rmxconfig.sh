@@ -92,6 +92,7 @@ fx_out_all(){
     echo "Folder Name: /var/www/$FOLDERNAME" 
     echo "SQL Link: $SQLLINK"
     read -p "Press ENTER key to proceed to config.xml. Press Ctrl + C to abort"
+    fx_print_xml
     cat ./config.xml
     echo ""
     echo "================="
