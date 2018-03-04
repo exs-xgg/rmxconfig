@@ -149,14 +149,14 @@ fx_do_get_vars(){
     fx_out_all
 }
 
-if [ -z "$1" ]; then
+if [ -z "$2" ]; then
     fx_print_init
 fi
-if [ -n "$1" ]; then
-    if [ "$1" == "--man" ]; then
+if [ -n "$2" ]; then
+    if [ "$2" == "--man" ]; then
         fx_print_man
     else
-        if [ "$1" == "--init-script" ]; then
+        if [ "$2" == "--init-script" ]; then
             fx_do_get_vars
         else
             fx_print_init
