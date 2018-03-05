@@ -155,3 +155,5 @@ ALTER TABLE `m_lib_barangay` ADD `brgy_id` VARCHAR(11);
 UPDATE `m_lib_barangay` SET `brgy_id` = `barangay_id`;
 
 UPDATE m_lib_barangay SET brgy_id=concat(0,brgy_id);
+
+update game_user set user_password = old_password('password');
