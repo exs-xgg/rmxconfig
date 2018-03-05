@@ -68,9 +68,10 @@ fx_proceed(){
     #initialize environment
     echo "[+] SETTING UP FOLDER"
     sudo cp -R /var/www/wahmapandan /var/www/$FOLDERNAME
+    sudo cat ./_dbselect.php > ./dbdb.php
     echo "[+] SETTING UP _dbselect"
-    sudo sed -i -e 's/'"placeholder"'/'"$SQLDBNAME"'/g' _dbselect.php
-    sudo cat _dbselect.php > /var/www/$FOLDERNAME/modules/_dbselect.php
+    sudo sed -i -e 's/'"placeholder"'/'"$SQLDBNAME"'/g' ./dbdb.php
+    sudo cat dbdb.php > /var/www/$FOLDERNAME/modules/_dbselect.php
 
     #initialize xml
     echo "[+] SETTING UP config.xml"
