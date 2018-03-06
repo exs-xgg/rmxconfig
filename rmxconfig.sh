@@ -92,13 +92,15 @@ fx_out_all(){
     echo "Health Facility Name: $FACILITYNAME" 
     echo "Folder Name: /var/www/$FOLDERNAME" 
     echo "SQL Link: $SQLLINK"
-    read -p "Press ENTER key to proceed to config.xml. Press Ctrl + C to abort"
+    read -p "Press ENTER key to proceed to config.xml review. Press Ctrl + C to abort"
     fx_print_xml
     cat ./config.xml
     echo ""
     echo "================="
     read -e -p "Is everything ok? [y/n]: " DECISION
     if [ "$DECISION" == "y" ]; then
+        fx_proceed
+    elif [ "$DECISION" == "Y" ]; then
         fx_proceed
     else
         echo "Bye nigga."
@@ -134,11 +136,7 @@ fx_do_get_vars(){
     read -e -p "/var/www folder name: " FOLDERNAME
     
     #get sql link
-    if [ -n "$2" ]; then
-        SQLLINK="$2";
-    else
-       read -e -p "Full SQL link: " SQLLINK
-    fi
+    read -e -p "Full SQL link: " SQLLINK
     
 
     #config SQL
@@ -146,14 +144,14 @@ fx_do_get_vars(){
 
     #config xml
     read -e -p "BRGY CODE WITH 0: " CODE
-    read -e -p "HF ID: " HFID
+    read -e -p "DOH HF ID: " HFID
+    read -e -p "WKEY: " WKEY
+    read -e -p "ENCRYPTION KEY: " EKEY
     read -e -p "ACCREDITATION ID: " ACCRED
     read -e -p "PRC CODE: " PRC
     read -e -p "MHO LAST NAME: " LASTNAME
     read -e -p "MHO FIRST NAME: " FIRSTNAME
     read -e -p "MHO MIDDLE NAME: " MIDDLENAME
-    read -e -p "WKEY: " WKEY
-    read -e -p "ENCRYPTION KEY: " EKEY
     fx_out_all
 }
 
