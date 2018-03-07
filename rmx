@@ -58,7 +58,7 @@ fx_proceed(){
     echo "[+] CREATING DATABASE QUERIES"
     sudo echo "create database $SQLDBNAME; " > configsql.sql
     echo "use $SQLDBNAME;" >> configsql.sql
-    SQLENV="SQLENV$SQLLINK"
+    SQLENV="$SQLENV$SQLLINK"
     sudo cat $SQLENV >> configsql.sql
     sudo cat mod.sql >> configsql.sql
     echo "[+] EXECUTING DATABASE QUERIES"
