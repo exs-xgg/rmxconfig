@@ -5,7 +5,7 @@ This script automates most of the process configuration including MySQL configur
 Install:
 On the terminal:
 * $ git clone https://github.com/exs-xgg/rmxconfig.git
-* $ chmod 755 rmxconfig.sh
+* $ chmod 755 ./rmx
 
 **IMPORTANT:** You should run this with sudo.
-* $ sudo ./rmxconfig.sh
+* $ sudo ./rmx
