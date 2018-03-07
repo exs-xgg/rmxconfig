@@ -109,6 +109,10 @@ fx_out_all(){
     fi
 }
 fx_print_man(){
+    if [ "$EUID" -ne 0 ]
+      then echo "Please run as root"
+      exit
+    fi
     echo "=================================="
     echo "Welcome to RMX Automated WAHFFLE configurator"
     echo "This script automates most of the process configuration including MySQL configuration and folder config."
