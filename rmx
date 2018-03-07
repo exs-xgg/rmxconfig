@@ -140,15 +140,13 @@ fx_do_get_vars(){
 
     #config SQL
     read -e -p "Full SQL DB Name: " SQLDBNAME
-
-
     read -e -p "WEB SERVICE KEY: " WKEY
     read -e -p "ENCRYPTION KEY: " EKEY
     read -e -p "PCB ACCREDITATION ID: " ACCRED
-    read -e -p "PRC CODE: " PRC
-    read -e -p "MHO LAST NAME: " LASTNAME
     read -e -p "MHO FIRST NAME: " FIRSTNAME
     read -e -p "MHO MIDDLE NAME: " MIDDLENAME
+    read -e -p "MHO LAST NAME: " LASTNAME
+    read -e -p "PRC CODE: " PRC
     fx_out_all
 }
 
