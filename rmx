@@ -44,7 +44,7 @@ cat <<EOT > ./config.xml
         <name>$FACILITYNAME</name>
         <code>$CODE</code>
         <telephone></telephone>
-        <level>childf</level>
+        <level>child</level>
         <hfid>$HFID</hfid>
     </node>
 </config>
@@ -131,7 +131,7 @@ fx_do_get_vars(){
     #get sql link
     read -e -p "SQL File name from Downloads folder: " SQLLINK
 
-    read -e -p "BRGY CODE WITH 0: " CODE
+    read -e -p "BRGY CODE (10 DIGITS. If kulang, dagdagan ng mga 0 sa harap): " CODE
 
     read -e -p "DOH HF ID: " HFID
     read -e -p "Health Facility: " FACILITYNAME
@@ -152,4 +152,4 @@ fx_do_get_vars(){
 
 fx_do_get_vars
 
-
+#1382 menu id
