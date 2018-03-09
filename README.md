@@ -6,34 +6,35 @@ This script automates most of the process configuration including MySQL configur
 Install:
 
 On the terminal:
-```bash
+```shell
 git clone https://github.com/exs-xgg/rmxconfig.git
 cd rmxconfig
 chmod 755 ./rmx
 ```
 
 **IMPORTANT:** You should run this with sudo.
-```bash
+```shell
 sudo ./rmx
 ```
 
 You can also make this script globally available by initializing a command on the/usr/local/bin repository
 
-```bash
+```shell
 cd /usr/local/bin
 sudo touch ./rmx
 ```
 Write this to ./rmx
-```
+```shell
 cd /path/to/rmxconfig
 sudo ./rmx
 ```
-```bash
+
 Change permission
+```shell
 chmod 750 ./rmx
 ```
 To run:
-```bash
+```shell
 sudo rmx
 ```
 NOTE: Edit the 2017/hf.php file before generating reports, since entries are pushed outside the php markdown
