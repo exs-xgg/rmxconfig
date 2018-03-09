@@ -22,8 +22,10 @@ cd /usr/local/bin
 sudo touch ./rmx
 ```
 Write this to ./rmx
-> cd /path/to/rmxconfig
-> sudo ./rmx
+```
+cd /path/to/rmxconfig
+sudo ./rmx
+```
 ```bash
 chmod 755 ./rmx
 ```
