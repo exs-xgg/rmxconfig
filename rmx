@@ -82,7 +82,7 @@ fx_proceed(){
     sudo chmod 777 /var/www/$FOLDERNAME
     echo ""
     echo "[+] Injecting RHU to Reports Generator"
-    sudo echo '"$FACILITYNAME" => "$SQLDBNAME",' >> /var/www/2017/hf.php
+    sudo echo "\"${FACILITYNAME}\" => \"$SQLDBNAME\", " >> /var/www/2017/hf.php
     echo "====================="
     echo "Done setting up!"
     echo ""
@@ -136,6 +136,7 @@ fx_do_get_vars(){
     
     #get sql link
     read -e -p "SQL File name from Downloads folder: " SQLLINK
+    read -e -p "SQL Database Name: " SQLDBNAME
 
     read -e -p "BRGY CODE (10 DIGITS. If kulang, dagdagan ng mga 0 sa harap): " CODE
 
@@ -145,7 +146,6 @@ fx_do_get_vars(){
     
 
     #config SQL
-    read -e -p "Full SQL DB Name: " SQLDBNAME
     read -e -p "WEB SERVICE KEY: " WKEY
     read -e -p "ENCRYPTION KEY: " EKEY
     read -e -p "PCB ACCREDITATION ID: " ACCRED
