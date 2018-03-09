@@ -33,4 +33,4 @@ To run:
 ```bash
 sudo rmx
 ```
-## NOTE: Edit the 2017/hf.php file before generating reports, since entries are pushed outside the php markdown
+NOTE: Edit the 2017/hf.php file before generating reports, since entries are pushed outside the php markdown
