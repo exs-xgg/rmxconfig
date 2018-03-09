@@ -82,11 +82,10 @@ fx_proceed(){
     sudo chmod 777 /var/www/$FOLDERNAME
     echo ""
     echo "[+] Injecting RHU to Reports Generator"
-    sudo echo '"$FACILITYNAME" => "$SQLDBNAME"' >> /var/www/2017/hf.php
+    sudo echo '"$FACILITYNAME" => "$SQLDBNAME",' >> /var/www/2017/hf.php
     echo "====================="
     echo "Done setting up!"
     echo ""
-    sudo gedit /var/www/2017/hf.php
 
 }
 fx_out_all(){
