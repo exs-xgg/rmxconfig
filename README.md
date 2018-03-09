@@ -4,16 +4,31 @@
 This script automates most of the process configuration including MySQL configuration and folder config.
 Install:
 On the terminal:
-* $ git clone https://github.com/exs-xgg/rmxconfig.git
-* $ chmod 755 ./rmx
+```bash
+git clone https://github.com/exs-xgg/rmxconfig.git
+cd rmxconfig
+chmod 755 ./rmx
+```
 
 **IMPORTANT:** You should run this with sudo.
-* $ sudo ./rmx
+```bash
+sudo ./rmx
+```
 
 You can also make this script globally available by initializing a command on the/usr/local/bin repository
-* $ cd /usr/local/bin
-* $ sudo touch rmx
-* $ sudo vi rmx
+
 ```bash
-sudo apt-get install
+cd /usr/local/bin
+sudo touch ./rmx
 ```
+Write this to ./rmx
+> cd /path/to/rmxconfig
+> sudo ./rmx
+```bash
+chmod 755 ./rmx
+```
+To run:
+```bash
+sudo rmx
+```
+## NOTE: Edit the 2017/hf.php file before generating reports, since entries are pushed outside the php markdown
