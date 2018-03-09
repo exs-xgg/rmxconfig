@@ -9,3 +9,5 @@ On the terminal:
 
 **IMPORTANT:** You should run this with sudo.
 * $ sudo ./rmx
+
+You can also make this script globally available by initializing a command on the/usr/local/bon repository
