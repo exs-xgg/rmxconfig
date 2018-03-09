@@ -27,7 +27,8 @@ cd /path/to/rmxconfig
 sudo ./rmx
 ```
 ```bash
-chmod 755 ./rmx
+Change permission
+chmod 750 ./rmx
 ```
 To run:
 ```bash
