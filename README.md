@@ -1,5 +1,5 @@
 # RMXConfig - the WAHFFLE server auto-configurator
-## Written by Romeo Manuel E. David
+#### Written by Romeo Manuel E. David
 
 This script automates most of the process configuration including MySQL configuration and folder config.
 Install:
@@ -11,3 +11,9 @@ On the terminal:
 * $ sudo ./rmx
 
 You can also make this script globally available by initializing a command on the/usr/local/bin repository
+* $ cd /usr/local/bin
+* $ sudo touch rmx
+* $ sudo vi rmx
+```bash
+sudo apt-get install
+```
