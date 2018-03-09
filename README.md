@@ -2,7 +2,9 @@
 #### Written by Romeo Manuel E. David
 
 This script automates most of the process configuration including MySQL configuration and folder config.
+
 Install:
+
 On the terminal:
 ```bash
 git clone https://github.com/exs-xgg/rmxconfig.git
