@@ -100,6 +100,9 @@ fx_out_all(){
     cat ./config.xml
     echo ""
     echo "================="
+    echo "Database Preview: "
+    sudo cat $SQLENV | head -10
+    echo ""
     read -e -p "Is everything ok? [y/n]: " DECISION
     if [ "$DECISION" == "y" ]; then
         fx_proceed
