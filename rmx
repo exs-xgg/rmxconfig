@@ -56,9 +56,29 @@ fx_proceed(){
     echo ""
     echo "==================="
     echo "[+] CREATING DATABASE QUERIES"
+
+
+    string=`cat $SQLENV | head -1`
+
+    if [[ $string = *"MySQL"* ]]; then
+        echo "[+] Database is encrypted. Decrypting now."
+        cat $SQLENV | ccrypt -d -k ~/.ekey > ${SQLENV}.dc
+        SQLENV=${SQLENV}.dc
+        IFMLIBEXISTS=`cat $SQLENV | grep m_lib | head -1`
+
+        
+        if [[ $IFMLIBEXISTS = *"m_lib"* ]]; then
+        else
+            echo "[X] DATABASE FORMAT INVALID. DOESNT CONTAIN M_LIB TABLES"
+            echo "Exiting now..."
+            echo ""
+            echo ""
+            exit
+        fi
+    fi
+
     sudo echo "create database $SQLDBNAME; " > configsql.sql
     echo "use $SQLDBNAME;" >> configsql.sql
-    SQLENV="$SQLENV$SQLLINK"
     sudo cat $SQLENV >> configsql.sql
     sudo cat mod.sql >> configsql.sql
     echo "[+] EXECUTING DATABASE QUERIES"
@@ -100,17 +120,7 @@ fx_out_all(){
     cat ./config.xml
     echo ""
     echo "================="
-    echo "Database Preview: "
-    sudo cat $SQLENV | head -10
-    echo ""
-    read -e -p "Is it encrypted? [y/n]: " DECISION
-    if [ "$DECISION" == "y" ]; then
-        cat $SQLENV | ccrypt -d -k ~/.ekey > ${SQLENV}.dc
-        SQLENV=${SQLENV}.dc
-    elif [ "$DECISION" == "Y" ]; then
-        cat $SQLENV | ccrypt -d -k ~/.ekey > ${SQLENV}.dc
-        SQLENV=${SQLENV}.dc
-    else
+    
 
     fi
     read -e -p "Is everything final? [y/n]: " DECISION
@@ -149,6 +159,15 @@ fx_do_get_vars(){
     
     #get sql link
     read -e -p "SQL File name from Downloads folder: " SQLLINK
+
+    
+    #join path with sql file name
+    SQLENV="$SQLENV$SQLLINK"
+    if [ ! -f $SQLENV ]; then
+        echo "[x] SQL File not found. Exiting..."
+        echo ""
+        exit
+    fi
     read -e -p "SQL Database Name: " SQLDBNAME
 
     read -e -p "BRGY CODE (10 DIGITS. If kulang, dagdagan ng mga 0 sa harap): " CODE
@@ -168,4 +187,7 @@ fx_do_get_vars(){
     read -e -p "PRC CODE: " PRC
     fx_out_all
 }
+
 fx_do_get_vars
+
+#1382 menu id
