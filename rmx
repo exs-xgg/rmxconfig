@@ -103,7 +103,17 @@ fx_out_all(){
     echo "Database Preview: "
     sudo cat $SQLENV | head -10
     echo ""
-    read -e -p "Is everything ok? [y/n]: " DECISION
+    read -e -p "Is it encrypted? [y/n]: " DECISION
+    if [ "$DECISION" == "y" ]; then
+        cat $SQLENV | ccrypt -d -k ~/.ekey > ${SQLENV}.dc
+        SQLENV=${SQLENV}.dc
+    elif [ "$DECISION" == "Y" ]; then
+        cat $SQLENV | ccrypt -d -k ~/.ekey > ${SQLENV}.dc
+        SQLENV=${SQLENV}.dc
+    else
+
+    fi
+    read -e -p "Is everything final? [y/n]: " DECISION
     if [ "$DECISION" == "y" ]; then
         fx_proceed
     elif [ "$DECISION" == "Y" ]; then
@@ -158,7 +168,4 @@ fx_do_get_vars(){
     read -e -p "PRC CODE: " PRC
     fx_out_all
 }
-
 fx_do_get_vars
-
-#1382 menu id
