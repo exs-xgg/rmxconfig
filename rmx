@@ -69,6 +69,7 @@ fx_proceed(){
         
         if [[ $IFMLIBEXISTS = *"m_lib"* ]]; then
         echo ""
+        #issue here???
         else
             echo "[X] DATABASE FORMAT INVALID. DOESNT CONTAIN M_LIB TABLES"
             echo "Exiting now..."
