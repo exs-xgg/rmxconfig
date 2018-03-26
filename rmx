@@ -124,7 +124,6 @@ fx_out_all(){
     echo "================="
     
 
-    fi
     read -e -p "Is everything final? [y/n]: " DECISION
     if [ "$DECISION" == "y" ]; then
         fx_proceed
