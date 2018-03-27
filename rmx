@@ -157,7 +157,7 @@ fx_do_get_vars(){
     read -e -p "/var/www folder name: " FOLDERNAME
     
     #get sql link
-    read -e -p "SQL File name from Downloads folder: " SQLLINK
+    read -e -p "SQL File name: /home/waffle-server/Downloads/" SQLLINK
 
     
     #join path with sql file name
