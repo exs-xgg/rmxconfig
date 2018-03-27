@@ -58,26 +58,26 @@ fx_proceed(){
     echo "[+] CREATING DATABASE QUERIES"
 
 
-    string=`cat $SQLENV | head -1`
+    # string=`cat $SQLENV | head -1`
 
-    if [[ $string = *"MySQL"* ]]; then
-        echo "[+] Database is encrypted. Decrypting now."
-        cat $SQLENV | ccrypt -d -k ~/.ekey > ${SQLENV}.dc
-        SQLENV=${SQLENV}.dc
-        IFMLIBEXISTS=`cat $SQLENV | grep m_lib | head -1`
+    # if [[ $string = *"MySQL"* ]]; then
+    #     echo "[+] Database is encrypted. Decrypting now."
+    #     cat $SQLENV | ccrypt -d -k ~/.ekey > ${SQLENV}.dc
+    #     SQLENV=${SQLENV}.dc
+    IFMLIBEXISTS=`cat $SQLENV | grep m_lib | head -1`
 
-        
-        if [[ $IFMLIBEXISTS = *"m_lib"* ]]; then
+    
+    if [[ $IFMLIBEXISTS = *"m_lib"* ]]; then
+    echo ""
+    #issue here???
+    else
+        echo "[X] DATABASE FORMAT INVALID. DOESNT CONTAIN M_LIB TABLES OR IS ENCRYPTED"
+        echo "Exiting now..."
         echo ""
-        #issue here???
-        else
-            echo "[X] DATABASE FORMAT INVALID. DOESNT CONTAIN M_LIB TABLES"
-            echo "Exiting now..."
-            echo ""
-            echo ""
-            exit
-        fi
+        echo ""
+        exit
     fi
+    # fi
 
     sudo echo "create database $SQLDBNAME; " > configsql.sql
     echo "use $SQLDBNAME;" >> configsql.sql
@@ -122,9 +122,7 @@ fx_out_all(){
     cat ./config.xml
     echo ""
     echo "================="
-    
-
-    read -e -p "Is everything final? [y/n]: " DECISION
+    read -e -p "Is everything ok? [y/n]: " DECISION
     if [ "$DECISION" == "y" ]; then
         fx_proceed
     elif [ "$DECISION" == "Y" ]; then
@@ -159,7 +157,7 @@ fx_do_get_vars(){
     read -e -p "/var/www folder name: " FOLDERNAME
     
     #get sql link
-    read -e -p "SQL File name from Downloads folder: " SQLLINK
+    read -e -p "SQL File name: /home/waffle-server/Downloads/" SQLLINK
 
     
     #join path with sql file name
