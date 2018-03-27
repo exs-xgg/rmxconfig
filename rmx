@@ -64,19 +64,7 @@ fx_proceed(){
     #     echo "[+] Database is encrypted. Decrypting now."
     #     cat $SQLENV | ccrypt -d -k ~/.ekey > ${SQLENV}.dc
     #     SQLENV=${SQLENV}.dc
-    IFMLIBEXISTS=`cat $SQLENV | grep m_lib | head -1`
-
     
-    if [[ $IFMLIBEXISTS = *"m_lib"* ]]; then
-    echo ""
-    #issue here???
-    else
-        echo "[X] DATABASE FORMAT INVALID. DOESNT CONTAIN M_LIB TABLES OR IS ENCRYPTED"
-        echo "Exiting now..."
-        echo ""
-        echo ""
-        exit
-    fi
     # fi
 
     sudo echo "create database $SQLDBNAME; " > configsql.sql
@@ -164,6 +152,19 @@ fx_do_get_vars(){
     SQLENV="$SQLENV$SQLLINK"
     if [ ! -f $SQLENV ]; then
         echo "[x] SQL File not found. Exiting..."
+        echo ""
+        exit
+    fi
+    IFMLIBEXISTS=`cat $SQLENV | grep m_lib | head -1`
+
+    
+    if [[ $IFMLIBEXISTS = *"m_lib"* ]]; then
+    echo ""
+    #issue here???
+    else
+        echo "[X] DATABASE FORMAT INVALID. DOESNT CONTAIN M_LIB TABLES OR IS ENCRYPTED"
+        echo "Exiting now..."
+        echo ""
         echo ""
         exit
     fi
