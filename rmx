@@ -162,11 +162,11 @@ fx_do_get_vars(){
     echo ""
     #issue here???
     else
-        echo "[X] DATABASE FORMAT INVALID. DOESNT CONTAIN M_LIB TABLES OR IS ENCRYPTED"
-        echo "Exiting now..."
-        echo ""
-        echo ""
-        exit
+        echo "[-] WARNING: DATABASE FORMAT INVALID. DOESNT CONTAIN M_LIB TABLES OR IS ENCRYPTED"
+   #     echo "Exiting now..."
+   #     echo ""
+   #     echo ""
+   #     exit
     fi
     read -e -p "SQL Database Name: " SQLDBNAME
 
